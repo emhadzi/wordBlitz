@@ -12,7 +12,6 @@ struct Node{
 	bool isWord;
 };
 
-const int ROWS = 4, COLS = 4;
 int curNode = 1;
 Node T[2000000];
 int grid[4][4];
@@ -132,12 +131,9 @@ int main(){
 	calcPaths();
 	orderPaths();
 	
+	getGridPos();
 	for(auto move : moves){
 		log(move);
 		inputWord(move.second);
 	}
 }
-
-//username: 
-//password:
-
