@@ -47,7 +47,7 @@ void readGrid(){
 		}
 	}
 }
-//https://docs.microsoft.com/en-us/cpp/ide/walkthrough-deploying-your-program-cpp?view=msvc-160
+
 int dx[8]{0,1,1,1,0,-1,-1,-1};
 int dy[8]{-1,-1,0,1,1,1,0,-1};
 bool V[10][10];
