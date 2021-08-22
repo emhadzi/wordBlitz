@@ -34,10 +34,11 @@ void init(){
 	vector <int> word;
 	for(std::string line; std::getline(fin, line);)
 		insertNode(greekFileToInt(line, word));
+	initAlphabet();
 }
 
 void readGrid(){
-	cout << "Input Grid\n";
+	cout << "Input Grid (USE ENGLISH CAPITAL LETTERS)\n";
 	for(int i = 0; i < ROWS; i++){
 		cout << "Row " << i+1 << ": ";
 		for(int j = 0; j < COLS; j++){
@@ -110,7 +111,7 @@ void log(pair<string, Path> move){
 	cout << "Path " << ++cnt << ":\n";
 	int num = 1;
 	
-	print(move.first);
+	//print(move.first);
 	
 	for(pair <int,int> x : move.second)
 		instructions[x.first][x.second] = num++;
@@ -127,21 +128,22 @@ void log(pair<string, Path> move){
 
 void getCap(){
 	int x;
-	cin >> x;
 	cout << "How many words to find? (enter -1 for max)\n";
+	cin >> x;
 	if(x != -1)
 		cap = x;
 }
 
 int main(){
 	init();
+	getCap();
+	
 	readGrid();
 	
 	calcPaths();
 	orderPaths();
 	
 	getGridPos();
-	getCap();
 	
 	for(int i = 0; i < min((int)moves.size(), cap); i++){
 		auto move = moves[i];
