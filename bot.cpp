@@ -12,6 +12,7 @@ struct Node{
 	bool isWord;
 };
 
+int cap = 1000;
 int curNode = 1;
 Node T[2000000];
 int grid[4][4];
@@ -46,7 +47,7 @@ void readGrid(){
 		}
 	}
 }
-
+//https://docs.microsoft.com/en-us/cpp/ide/walkthrough-deploying-your-program-cpp?view=msvc-160
 int dx[8]{0,1,1,1,0,-1,-1,-1};
 int dy[8]{-1,-1,0,1,1,1,0,-1};
 bool V[10][10];
@@ -124,6 +125,14 @@ void log(pair<string, Path> move){
 	cout << '\n';
 }
 
+void getCap(){
+	int x;
+	cin >> x;
+	cout << "How many words to find? (enter -1 for max)\n";
+	if(x != -1)
+		cap = x;
+}
+
 int main(){
 	init();
 	readGrid();
@@ -132,7 +141,10 @@ int main(){
 	orderPaths();
 	
 	getGridPos();
-	for(auto move : moves){
+	getCap();
+	
+	for(int i = 0; i < min((int)moves.size(), cap); i++){
+		auto move = moves[i];
 		log(move);
 		inputWord(move.second);
 	}
