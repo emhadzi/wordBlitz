@@ -1,11 +1,14 @@
 #include <iostream>
 #include <vector>
+#include <unordered_map>
 using namespace std;
 
-void print(string s){
-	for(char c : s)
-		cout << (char)((c-'A') >= 18 ? c-'A'-129 : c-'A'-128);
-	cout << '\n';
+unordered_map <char,int> letterCode;
+string alphabet = "ABGDEZHUIKLMNJOPRSTYFXCV";
+
+void initAlphabet(){
+	for(int i = 0; i < (int)alphabet.length(); i++)
+		letterCode[alphabet[i]] = i+1;
 }
 
 vector<int>& greekFileToInt(string line, vector <int>& word){
@@ -13,14 +16,13 @@ vector<int>& greekFileToInt(string line, vector <int>& word){
 	int n = line.length();
 	for(int i = 1; i < n; i += 2){
 		int letter = (int)(line[i] + 112);
+		if(letter >= 19)
+			letter--;
 		word.push_back(letter);
 	}
 	return word;
 }
 
 inline int greekConsoleToInt(char letter){
-	int ans = letter + 129;
-	if(ans >= 18)
-		ans++;
-	return ans;
+	return letterCode[letter];
 }
