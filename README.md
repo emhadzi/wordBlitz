@@ -32,4 +32,4 @@ A B E D
 5) Place your cursor on the center of the top left cell and enter 0
   Do the same for the center of the bottom right cell and enter 0
 
-6) The program should take on from there, it usually takes about 45 to find the maximum amount of words
+6) The program should take on from there, it usually takes about 45 seconds to find the maximum amount of words
